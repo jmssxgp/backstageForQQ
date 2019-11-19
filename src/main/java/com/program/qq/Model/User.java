@@ -17,11 +17,17 @@ public class User {
     //年龄
     private int age;
 
+    //性别
+    private int gender;
+
+    //学历
+    private String eduBackground;
+
     //生日
     private String birthday;
 
     //是否认证
-    private boolean isConfirm;
+    private int isConfirm;
 
     //星座
     private String star;
@@ -35,11 +41,27 @@ public class User {
     //照片
     private String photos;
 
+    //头像
+    private String avatarUrl;
+
     public User(){
 
     }
 
     public User(String userId) {
         this.userId = userId;
+        this.nickname = "初始昵称";
+        this.age = 0;
+        this.eduBackground ="";
+        this.isConfirm = 0;
+        this.photos = "";
+        this.tag = "";
+        this.photos = "";
+        this.gender = 0;
+        this.personalSign = "";
+        this.star = "";
+        this.birthday = "";
+        this.school ="";
+        this.avatarUrl="";
     }
 }
