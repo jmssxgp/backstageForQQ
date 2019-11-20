@@ -76,4 +76,14 @@ public class userServiceImpl implements userService {
     public void updateAvatarUrl(String userId, String avatarUrl) {
         userDao.updateAvatarUrl(userId, avatarUrl);
     }
+
+    @Override
+    public void updateBirthdayById(String userId, String birthday) {
+        userDao.updateBirthdayById(userId, birthday);
+    }
+
+    @Override
+    public void updateGenderById(String userId, int gender) {
+        userDao.updateGenderById(userId, gender);
+    }
 }

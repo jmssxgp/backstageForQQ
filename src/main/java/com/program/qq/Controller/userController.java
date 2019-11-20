@@ -112,4 +112,34 @@ public class userController {
         }
         return "success";
     }
+
+    @PostMapping("/updateGender")
+    public String updateGender(@RequestParam String userId, @RequestParam int gender){
+        try {
+            userService.updateGenderById(userId, gender);
+        }catch (Exception e){
+            return "failed";
+        }
+        return "success";
+    }
+
+    @PostMapping("/updateNickname")
+    public String updateNickname(@RequestParam String userId, @RequestParam String nickname){
+        try {
+            userService.updateNicknameById(userId, nickname);
+        }catch (Exception e){
+            return "failed";
+        }
+        return "success";
+    }
+
+    @PostMapping("/updateBirthday")
+    public String updateBirthday(@RequestParam String userId, @RequestParam String birthday){
+        try {
+            userService.updateBirthdayById(userId, birthday);
+        }catch (Exception e){
+            return "failed";
+        }
+        return "success";
+    }
 }

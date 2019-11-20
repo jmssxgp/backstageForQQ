@@ -31,6 +31,10 @@ public interface userService {
 
     void updateNicknameById(String userId, String nickname);
 
+    void updateBirthdayById(String userId, String birthday);
+
+    void updateGenderById(String userId, int gender);
+
     void updatePhotosById(String userId, String photos);
 
     void updateAvatarUrl(String userId, String avatarUrl);

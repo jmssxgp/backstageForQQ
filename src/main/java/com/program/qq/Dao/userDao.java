@@ -1,6 +1,7 @@
 package com.program.qq.Dao;
 
 import com.program.qq.Model.User;
+import javafx.scene.control.Tab;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
@@ -35,6 +36,12 @@ public interface userDao {
 
     @Update({"update", TABLE_NAME, "set nickname = #{nickname} where user_id = #{userId}"})
     void updateNicknameById(@Param("userId") String userId, @Param("nickname") String nickname);
+
+    @Update({"update", TABLE_NAME, "set gender = #{gender} where user_id = #{userId}"})
+    void updateGenderById(@Param("userId") String userId, @Param("gender") int gender);
+
+    @Update({"update", TABLE_NAME, "set birthday = #{birthday} where user_id = #{userId}"})
+    void updateBirthdayById(@Param("userId") String userId, @Param("birthday") String birthday);
 
     @Update({"update", TABLE_NAME, "set nickname = #{nickname}, personal_sign = #{personalSign}," +
             "age = #{age}, star = #{star}, birthday = #{birthday} where user_id = #{userId}"})
