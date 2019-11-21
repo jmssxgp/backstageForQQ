@@ -1,5 +1,6 @@
 package com.program.qq.Controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.program.qq.Model.User;
 import com.program.qq.Service.userService;
 import com.program.qq.Util.getOpenIdUtil;
@@ -25,8 +26,7 @@ public class userController {
     public User addOrGetUser(@RequestParam String code){
         //拼接url，获取openId
         String userId = getOpenIdUtil.getOpenId(code);
-        //检查是否已注册
-        userId = userId.substring(4, userId.length()-4);
+        //检查是否已注ce
         User user = userService.getUserById(userId);
         if (user==null){
             user = new User(userId);
@@ -38,15 +38,16 @@ public class userController {
     }
 
     /**
-     * 登录后必填信息，仅可修改一次。
-     * @param userId
-     * @param school
-     * @param gender
-     * @param eduBackground
+     * 登录后必填信息，仅可修改一次
+     * @param param
      * @return
      */
     @PostMapping("/updateImportantInfo")
-    public String updateImportantInfo(@RequestParam String userId, @RequestParam String school, @RequestParam String gender, @RequestParam String eduBackground){
+    public String updateImportantInfo(@RequestBody JSONObject param){
+        String userId = param.getString("userId");
+        String school = param.getString("school");
+        String gender = param.getString("gender");
+        String eduBackground = param.getString("eduBackground");
         try {
             userService.updateImportantInfo(userId, school, gender, eduBackground);
         }catch (Exception e){
@@ -94,6 +95,7 @@ public class userController {
      */
     @PostMapping("/updatePhotosById")
     public String updatePhotosById(@RequestParam String userId, @RequestParam String photos){
+        //System.out.println(photos);
         try {
             userService.updatePhotosById(userId, photos);
         }catch (Exception e){
@@ -137,6 +139,16 @@ public class userController {
     public String updateBirthday(@RequestParam String userId, @RequestParam String birthday){
         try {
             userService.updateBirthdayById(userId, birthday);
+        }catch (Exception e){
+            return "failed";
+        }
+        return "success";
+    }
+
+    @PostMapping("/updateSchool")
+    public String updateSchool(@RequestParam String userId, @RequestParam String school){
+        try {
+            userService.updateSchoolById(userId, school);
         }catch (Exception e){
             return "failed";
         }
