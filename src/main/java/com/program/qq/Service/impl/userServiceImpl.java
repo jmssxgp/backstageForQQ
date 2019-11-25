@@ -6,6 +6,9 @@ import com.program.qq.Service.userService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * @author xgp
  * @version 1.0
@@ -85,5 +88,25 @@ public class userServiceImpl implements userService {
     @Override
     public void updateGenderById(String userId, int gender) {
         userDao.updateGenderById(userId, gender);
+    }
+
+    @Override
+    public void updateAge(String userId, int age) {
+        userDao.updateAge(userId, age);
+    }
+
+    @Override
+    public User selectUser(String userId) {
+        return userDao.selectUserById(userId);
+    }
+
+    @Override
+    public Map selectChatUser(String userId) {
+        return userDao.selectChatUser(userId);
+    }
+
+    @Override
+    public List<User> selectByCondition(int gender, String school, int low, int high) {
+        return userDao.selectByCondition(gender, school, low, high);
     }
 }

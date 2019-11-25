@@ -7,6 +7,9 @@ import com.program.qq.Util.getOpenIdUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * @author xgp
  * @version 1.0
@@ -153,5 +156,36 @@ public class userController {
             return "failed";
         }
         return "success";
+    }
+
+    @PostMapping("/updateAge")
+    public String updateAge(@RequestParam String userId, @RequestParam int age){
+        try {
+            userService.updateAge(userId, age);
+        }catch (Exception e){
+            return "failed";
+        }
+        return "success";
+    }
+
+    @GetMapping("/getUser")
+    public User getUser(@RequestParam String userId){
+        return userService.selectUser(userId);
+
+    }
+
+    @GetMapping("/getChatUser")
+    public Map getChatUser(@RequestParam String userId){
+        return userService.selectChatUser(userId);
+    }
+
+    @PostMapping("/selectByCondition")
+    public List<User> getByCondition(@RequestBody JSONObject param){
+        int gender = param.getInteger("gender");
+        String school = param.getString("school");
+        int low = param.getInteger("low");
+        int high = param.getInteger("high");
+
+        return userService.selectByCondition(gender, school, low, high);
     }
 }

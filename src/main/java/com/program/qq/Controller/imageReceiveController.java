@@ -7,12 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.function.ServerResponse;
-
-import javax.jws.WebParam;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 
@@ -29,7 +24,7 @@ public class imageReceiveController {
         MultipartHttpServletRequest req = (MultipartHttpServletRequest) request;
         MultipartFile file = req.getFile("file");
         String name = imageRename.name(preName);
-        String realPath = "D:/icon";
+        String realPath = "/root/ws-project/image";
         try {
             File dir = new File(realPath);
             if(!dir.exists()){

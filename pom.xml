@@ -12,6 +12,7 @@
 	<artifactId>qq</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>qq</name>
+	<packaging>jar</packaging>
 	<description>project for Spring Boot</description>
 
 	<properties>
@@ -50,12 +51,12 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!--mysql-->
-		<!--mysql驱动包-->
+		<!--maria-->
+		<!--maria驱动包-->
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.35</version>
+			<groupId>org.mariadb.jdbc</groupId>
+			<artifactId>mariadb-java-client</artifactId>
+			<version>2.1.2</version>
 		</dependency>
 
 		<!--热部署-->
