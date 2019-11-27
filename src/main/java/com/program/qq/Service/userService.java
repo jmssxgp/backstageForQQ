@@ -49,4 +49,10 @@ public interface userService {
     Map selectChatUser(String userId);
 
     List<User> selectByCondition(int gender, String school, int low, int high);
+
+    List<User> selectByAge(int low, int high);
+
+    List<User> selectByAgeAndSchool(String school, int low, int high);
+
+    List<User> selectByAgeAndGender(int gender, int low, int high);
 }

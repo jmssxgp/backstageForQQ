@@ -186,6 +186,14 @@ public class userController {
         int low = param.getInteger("low");
         int high = param.getInteger("high");
 
+        if (gender==2&&school.equals("")){
+            return userService.selectByAge(low, high);
+        }else if (gender==2){
+            return userService.selectByAgeAndSchool(school, low, high);
+        }else if (school.equals("")){
+            return userService.selectByAgeAndGender(gender, low, high);
+        }
+
         return userService.selectByCondition(gender, school, low, high);
     }
 }

@@ -109,4 +109,19 @@ public class userServiceImpl implements userService {
     public List<User> selectByCondition(int gender, String school, int low, int high) {
         return userDao.selectByCondition(gender, school, low, high);
     }
+
+    @Override
+    public List<User> selectByAge(int low, int high) {
+        return userDao.selectByAge(low, high);
+    }
+
+    @Override
+    public List<User> selectByAgeAndSchool(String school, int low, int high) {
+        return userDao.selectByAgeAndSchool(low, high, school);
+    }
+
+    @Override
+    public List<User> selectByAgeAndGender(int gender, int low, int high) {
+        return userDao.selectByAgeAndGender(gender,low, high);
+    }
 }

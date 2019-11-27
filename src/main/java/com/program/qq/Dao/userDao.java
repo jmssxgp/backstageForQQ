@@ -34,6 +34,15 @@ public interface userDao {
     @Select({"select * from", TABLE_NAME, "where gender=#{gender} and school=#{school} and age between #{low} and #{high}"})
     List<User> selectByCondition(@Param("gender") int gender, @Param("school") String school, @Param("low") int low, @Param("high") int high);
 
+    @Select({"select * from", TABLE_NAME, "age between #{low} and #{high}"})
+    List<User> selectByAge(@Param("low") int low, @Param("high") int high);
+
+    @Select({"select * from", TABLE_NAME, "where school=#{school} and age between #{low} and #{high}"})
+    List<User> selectByAgeAndSchool(@Param("low") int low, @Param("high") int high, @Param("school") String school);
+
+    @Select({"select * from", TABLE_NAME, "where gender=#{gender} and age between #{low} and #{high}"})
+    List<User> selectByAgeAndGender(@Param("gender") int gender, @Param("low") int low, @Param("high") int high);
+
     @Update({"update", TABLE_NAME, "set school = #{school}, gender = #{gender}, edu_background = #{eduBackground} where user_id = #{userId}"})
     void updateImportantInfo(@Param("userId") String userId, @Param("school") String school, @Param("gender") String gender, @Param("eduBackground") String eduBackground);
 
