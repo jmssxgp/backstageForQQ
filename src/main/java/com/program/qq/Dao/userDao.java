@@ -34,7 +34,7 @@ public interface userDao {
     @Select({"select * from", TABLE_NAME, "where gender=#{gender} and school=#{school} and age between #{low} and #{high}"})
     List<User> selectByCondition(@Param("gender") int gender, @Param("school") String school, @Param("low") int low, @Param("high") int high);
 
-    @Select({"select * from", TABLE_NAME, "age between #{low} and #{high}"})
+    @Select({"select * from", TABLE_NAME, "where age between #{low} and #{high}"})
     List<User> selectByAge(@Param("low") int low, @Param("high") int high);
 
     @Select({"select * from", TABLE_NAME, "where school=#{school} and age between #{low} and #{high}"})

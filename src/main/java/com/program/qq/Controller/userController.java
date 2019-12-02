@@ -7,6 +7,8 @@ import com.program.qq.Util.getOpenIdUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -185,15 +187,19 @@ public class userController {
         String school = param.getString("school");
         int low = param.getInteger("low");
         int high = param.getInteger("high");
-
+        List<User> users;
         if (gender==2&&school.equals("")){
-            return userService.selectByAge(low, high);
+            users = userService.selectByAge(low, high);
         }else if (gender==2){
-            return userService.selectByAgeAndSchool(school, low, high);
+            users = userService.selectByAgeAndSchool(school, low, high);
         }else if (school.equals("")){
-            return userService.selectByAgeAndGender(gender, low, high);
+            users = userService.selectByAgeAndGender(gender, low, high);
+        }else {
+            users = userService.selectByCondition(gender,school,low,high);
         }
 
-        return userService.selectByCondition(gender, school, low, high);
+        users.removeIf(user -> user.getNickname().equals("我是昵称"));
+        Collections.shuffle(users);
+        return users;
     }
 }
