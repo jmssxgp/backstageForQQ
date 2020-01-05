@@ -1,7 +1,6 @@
 package com.program.qq.Dao;
 
 import com.program.qq.Model.User;
-import javafx.scene.control.Tab;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
