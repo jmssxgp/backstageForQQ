@@ -50,8 +50,8 @@ public class User {
 
     public User(String userId) {
         this.userId = userId;
-        this.nickname = "初始昵称";
-        this.age = 0;
+        this.nickname = "我是昵称";
+        this.age = 18;
         this.eduBackground ="";
         this.isConfirm = 0;
         this.photos = "";
@@ -60,7 +60,7 @@ public class User {
         this.gender = 0;
         this.personalSign = "";
         this.star = "";
-        this.birthday = "";
+        this.birthday = "2001-01-01";
         this.school ="";
         this.avatarUrl="";
     }

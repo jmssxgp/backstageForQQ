@@ -3,6 +3,9 @@ package com.program.qq.Service;
 
 import com.program.qq.Model.User;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * @author xgp
  * @version 1.0
@@ -38,4 +41,18 @@ public interface userService {
     void updatePhotosById(String userId, String photos);
 
     void updateAvatarUrl(String userId, String avatarUrl);
+
+    void updateAge(String userId, int age);
+
+    User selectUser(String userId);
+
+    Map selectChatUser(String userId);
+
+    List<User> selectByCondition(int gender, String school, int low, int high);
+
+    List<User> selectByAge(int low, int high);
+
+    List<User> selectByAgeAndSchool(String school, int low, int high);
+
+    List<User> selectByAgeAndGender(int gender, int low, int high);
 }
